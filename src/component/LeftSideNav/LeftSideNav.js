@@ -12,6 +12,7 @@ const LeftSideNav = () => {
     }, [])
     return (
         <div className="d-block sticky-md-top ">
+            <h3 className="mb-3">Course Name</h3>
             {
                 catagories.map(catagorie => <p className=""
                     key={catagorie.id}>
