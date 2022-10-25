@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
 const Register = () => {
+    const [error , setError] = useState();
+    const {createUser} = useContext(AuthContext);
     const handleSubmit = (e) =>{
         e.preventDefault();
         const form = e.target;
@@ -11,7 +15,17 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name , photoURL , email , password)
+        console.log(name , photoURL , email , password);
+
+        createUser(email , password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => {
+            const errorMessage = error.message;
+            setError(errorMessage);
+        })
     }
     return (
         <Form onSubmit={handleSubmit} className='w-75 container' >
@@ -31,6 +45,7 @@ const Register = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" name="password" placeholder="Password" />
         </Form.Group>
+        <div><p className='text-danger'>{error}</p></div>
         <div className='mb-2'>Already have a account? <Link to={'/login'}>Login</Link></div>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />

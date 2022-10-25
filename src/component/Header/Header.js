@@ -6,8 +6,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Image from './image/Study title.png'
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
 const Header = () => {
+  const {user} = useContext(AuthContext);
     return (
        <div className='sticky-md-top'>
          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -39,7 +42,7 @@ const Header = () => {
               }
               <Nav.Link href="#deets">More deets</Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
-                Dank memes
+                {user?.email}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
