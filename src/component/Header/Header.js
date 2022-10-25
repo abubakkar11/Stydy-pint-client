@@ -9,7 +9,8 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+       <div className='sticky-md-top'>
+         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
         <Navbar.Brand href="#home">
             <img
@@ -25,7 +26,7 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
               <Nav.Link><Link className='text-decoration-none text-white navbar'  to={'/home'}><span className='navbar'>Home</span></Link></Nav.Link>
-              <Nav.Link><Link className='text-decoration-none text-white navbar'  to={'/login'}><span className='navbar'>Courses</span></Link></Nav.Link>
+              <Nav.Link><Link className='text-decoration-none text-white navbar'  to={'/courses'}><span className='navbar'>Courses</span></Link></Nav.Link>
               <Nav.Link><Link className='text-decoration-none text-white navbar'  to={'/faq'}><span className='navbar'>FAQ</span></Link></Nav.Link>
               <Nav.Link><Link className='text-decoration-none text-white navbar'  to={'/blog'}><span className='navbar'>Blog</span></Link></Nav.Link>
              
@@ -44,6 +45,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+       </div>
     );
 };
 
