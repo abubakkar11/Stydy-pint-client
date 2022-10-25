@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Image from './image/Study title.png'
+import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
     return (
@@ -30,6 +31,11 @@ const Header = () => {
              
             </Nav>
             <Nav>
+              {
+               <div className='d-md-none '>
+                 <LeftSideNav></LeftSideNav>
+               </div>
+              }
               <Nav.Link href="#deets">More deets</Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
                 Dank memes
