@@ -24,7 +24,7 @@ const Header = () => {
       .catch(error => console.error(error))
   }
   return (
-    <div className='sticky-md-top'>
+    <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand to={'/home'}>
@@ -59,7 +59,7 @@ const Header = () => {
                     width="30"
                     height="30"
                     className="d-inline-block align-top rounded-circle"
-                    alt="user"
+                    alt={user.displayName}
                   />
                   :
                   <AiOutlineUserSwitch></AiOutlineUserSwitch>

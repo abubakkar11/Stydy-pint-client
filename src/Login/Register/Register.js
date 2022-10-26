@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 import { AiOutlineGooglePlus , AiOutlineGithub } from "react-icons/ai";
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 
 const Register = () => {
-    const [error , setError] = useState();
+    const [error , setError] = useState(true);
     const [active ,setActive] = useState(false);
-    const {createUser , createUserWithGoogle} = useContext(AuthContext);
+    const {createUser , createUserWithGoogle , updateProfiles ,sendEmailVerify} = useContext(AuthContext);
     const provider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider()
     const handleSubmit = (e) =>{
@@ -21,19 +22,37 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
+       
         console.log(name , photoURL , email , password);
         createUser(email , password)
         .then(result => {
             const user = result.user;
+            handleUpdateProfile(name , photoURL)
+            setError(false)
+            sendEmailToVerify()
+            toast.success('Sent Email Please Verify Your Email')
+            form.reset()
             console.log(user)
         })
         .catch(error => {
             const errorMessage = error.message;
             setError(errorMessage);
         })
+       
     }
     const handleActive = e =>{
         setActive(e.target.checked);
+    }
+    const handleUpdateProfile = (name ,photoURL) =>{
+      const profile = {
+        displayName : name,
+        photoURL : photoURL
+      }
+      updateProfiles(profile)
+      .then(() => {
+        'profile updated'
+      })
+      .catch(error => console.error(error))
     }
     const handleGoogleSingUp = () =>{
         createUserWithGoogle(provider)
@@ -50,6 +69,12 @@ const Register = () => {
             console.log(user)
         })
         .catch(error => console.error(error))
+    }
+    const sendEmailToVerify = () =>{
+      sendEmailVerify()
+        .then(() => {})
+        .catch(error => error.console.error(error))
+        
     }
     return (
         <Form onSubmit={handleSubmit} className='w-75 container' >
