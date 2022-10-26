@@ -1,7 +1,7 @@
 import React from 'react';
 import { Accordion, Card, useAccordionButton } from 'react-bootstrap';
 import Header from '../Header/Header';
-import Image from './image/Question1.jpg'
+import Image from './image/Question1-removebg-preview.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import { faPlus} from '@fortawesome/free-solid-svg-icons'
 
@@ -81,7 +81,7 @@ const Faq = () => {
             </Accordion>
            </div>
             <div>
-                <img  className='w-75 ms-5' src={Image} alt="" />
+                <img  className=' ms-5 d-none d-md-block' src={Image} alt="" />
             </div>
         </div>
         </div >

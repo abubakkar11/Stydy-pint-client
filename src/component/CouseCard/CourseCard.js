@@ -3,7 +3,6 @@ import { Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import { Link } from 'react-router-dom';
-import './CourseCard.css'
 
 const CourseCard = ({ course }) => {
   console.log(course)

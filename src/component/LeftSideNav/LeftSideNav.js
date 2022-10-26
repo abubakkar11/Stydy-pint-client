@@ -12,12 +12,12 @@ const LeftSideNav = () => {
     }, [])
     return (
         <div className="d-block sticky-md-top ">
-            <h3 className="mb-3">Course Name</h3>
+            <h3 className="mb-3 text-white">Course Name</h3>
             {
                 catagories.map(catagorie => <p className=""
                     key={catagorie.id}>
-                    <Button variant="outline-warning w-75 sticky-top"> 
-                    <Link  className="text-decoration-none text-black fw-bold" to={`/course/${catagorie.id}`}>{catagorie.name}</Link>
+                    <Button variant="primary w-75 sticky-top"> 
+                    <Link  className="text-decoration-none text-white fw-bold" to={`/course/${catagorie.id}`}>{catagorie.name}</Link>
                     </Button>
                 </p>)
             }

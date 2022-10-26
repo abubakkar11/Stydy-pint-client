@@ -3,13 +3,15 @@ import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 
 const Login = () => {
     const [error , setError] = useState(true);
     const {signIn} = useContext(AuthContext);
-    const navigative = useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const handleSubmitLogin = (e) =>{
         e.preventDefault();
         const form = e.target;
@@ -23,7 +25,7 @@ const Login = () => {
             form.reset()
             if(user.emailVerified === true){
               toast.success('Login Successful')
-              navigative('/')
+              navigate(from , {replace : true})
             }
             else{
               toast.error('Please Verify Your Email')
@@ -36,7 +38,7 @@ const Login = () => {
         })
     }
     return (
-        <Form onSubmit={handleSubmitLogin} className='w-75 container'>
+        <Form onSubmit={handleSubmitLogin} className='w-75 container text-white'>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" name ="email" placeholder="Enter email" />

@@ -77,7 +77,7 @@ const Register = () => {
         
     }
     return (
-        <Form onSubmit={handleSubmit} className='w-75 container' >
+        <Form onSubmit={handleSubmit} className='w-75 container text-white'  >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" name ="name" placeholder="Enter Your Name" />
@@ -99,7 +99,7 @@ const Register = () => {
         <div><p className='text-danger'>{error}</p></div>
         <div className='mb-2'>Already have a account? <Link to={'/login'}>Login</Link></div>
         <Form.Group className="mb-3" onClick={handleActive} controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check type="checkbox" label={<>Accept <Link to={'/terms'}>Terms & Condition</Link> </> } />
         </Form.Group>
         <Button variant="primary" disabled={!active} type="submit">
           Register

@@ -70,8 +70,8 @@ const Header = () => {
                     user?.displayName
                     :
                     <>
-                      <Link to={'/login'}><Button className='me-2' variant="outline-primary">Login</Button></Link>
-                      <Link to={'/register'}><Button variant="outline-primary">Register</Button></Link>
+                      <Link to={'/login'}><Button className='me-2' variant="outline-warning">Login</Button></Link>
+                      <Link to={'/register'}><Button variant="outline-warning">Register</Button></Link>
                     </>
                 }
                 {
