@@ -10,6 +10,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
     const [error , setError] = useState();
+    const [active ,setActive] = useState(false);
     const {createUser , createUserWithGoogle} = useContext(AuthContext);
     const provider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider()
@@ -21,7 +22,6 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name , photoURL , email , password);
-
         createUser(email , password)
         .then(result => {
             const user = result.user;
@@ -32,6 +32,9 @@ const Register = () => {
             setError(errorMessage);
         })
     }
+    const handleActive = e =>{
+        setActive(e.target.checked);
+    }
     const handleGoogleSingUp = () =>{
         createUserWithGoogle(provider)
         .then(result =>{
@@ -41,7 +44,7 @@ const Register = () => {
         .catch(error => console.error(error))
     }
     const handleGithubSingUp = () =>{
-        createUserWithGoogle(provider)
+        createUserWithGoogle(gitHubProvider)
         .then(result =>{
             const user = result.user;
             console.log(user)
@@ -70,10 +73,10 @@ const Register = () => {
         <Button onClick={handleGithubSingUp} className='w-50 ' variant="outline-secondary"><AiOutlineGithub className='fs-4 '></AiOutlineGithub> Sigh up with Github</Button>
         <div><p className='text-danger'>{error}</p></div>
         <div className='mb-2'>Already have a account? <Link to={'/login'}>Login</Link></div>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-3" onClick={handleActive} controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" disabled={!active} type="submit">
           Register
         </Button>
       </Form>
