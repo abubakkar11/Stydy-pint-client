@@ -9,10 +9,10 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
 import { Button, } from 'react-bootstrap';
-import { AiOutlineLogout, AiOutlineUserSwitch , } from 'react-icons/ai';
+import { AiOutlineLogout, AiOutlineUserSwitch, } from 'react-icons/ai';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-  import { faMoon , faLightbulb  } from '@fortawesome/free-solid-svg-icons'
+import { faMoon, faLightbulb } from '@fortawesome/free-solid-svg-icons'
 
 
 const Header = () => {
@@ -47,6 +47,7 @@ const Header = () => {
 
             </Nav>
             <Nav className='d-flex justify-content-center align-items-center'>
+            <Nav.Link href="#deets">
               {
                 <div className='d-md-none '>
                   <LeftSideNav></LeftSideNav>
@@ -62,8 +63,9 @@ const Header = () => {
                     alt={user.displayName}
                   />
                   :
-                  <AiOutlineUserSwitch></AiOutlineUserSwitch>
+                  <AiOutlineUserSwitch className='fs-4'></AiOutlineUserSwitch>
               }
+               </Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
                 {
                   user?.uid ?
@@ -81,9 +83,9 @@ const Header = () => {
                     <div className='d-none'>{user?.displayName}</div>
                 }
                 {
-               darkmode ? <FontAwesomeIcon onClick={() => setDarkmode(!darkmode)} className='ms-5 fs-4' icon = {faLightbulb}></FontAwesomeIcon> 
-               :
-               <FontAwesomeIcon onClick={() => setDarkmode(!darkmode)} className='ms-5 fs-4' icon ={faMoon}></FontAwesomeIcon>
+                  darkmode ? <FontAwesomeIcon onClick={() => setDarkmode(!darkmode)} className='ms-5 fs-4' icon={faLightbulb}></FontAwesomeIcon>
+                    :
+                    <FontAwesomeIcon onClick={() => setDarkmode(!darkmode)} className='ms-5 fs-4' icon={faMoon}></FontAwesomeIcon>
                 }
               </Nav.Link>
             </Nav>

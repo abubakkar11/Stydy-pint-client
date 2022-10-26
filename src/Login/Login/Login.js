@@ -17,7 +17,6 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log( email , password);
         signIn(email , password)
         .then(result =>{
             const user = result.user;
@@ -35,6 +34,7 @@ const Login = () => {
         .catch(error => {
             const errorMessage = error.message;
             setError(errorMessage);
+            toast.error('Please Enter Valid Information')
         })
     }
     return (

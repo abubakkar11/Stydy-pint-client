@@ -13,58 +13,58 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
-        path : '/',
-        element : <Main></Main>,
-        children : [
+        path: '/',
+        element: <Main></Main>,
+        children: [
             {
-                path : '/',
-                element : <Home></Home>,
+                path: '/',
+                element: <Home></Home>,
             },
             {
-                path : '/home',
-                element : <Home></Home>,
-            },
-          
-            {
-                path : '/login',
-                element : <Login></Login>
-            },
-            {
-                path : '/register',
-                element : <Register></Register>
+                path: '/home',
+                element: <Home></Home>,
             },
 
             {
-                path : '/courses',
-                element : <Courses></Courses>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path : '/course/:id',
-                loader : ({params}) => fetch(`http://localhost:5000/course-details/${params.id}`),
-                element : <Course></Course>
+                path: '/register',
+                element: <Register></Register>
+            },
+
+            {
+                path: '/courses',
+                element: <Courses></Courses>
             },
             {
-                path : '/course-details/:id',
-                loader : ({params}) => fetch(`http://localhost:5000/course/${params.id}`),
-                element : <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
+                path: '/course/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/course-details/${params.id}`),
+                element: <Course></Course>
+            },
+            {
+                path: '/course-details/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
             },
         ]
-        
+
     },
-   {
-    path : '*',
-    element : <div>The Page not found</div>
-   },
-   {
-    path : '/faq',
-    element : <Faq></Faq>
-},
-{
-    path : '/terms',
-    element : <Terms></Terms>
-},
-{
-    path : '/blog',
-    element : <Blog></Blog>
-}
+    {
+        path: '*',
+        element: <div>The Page not found</div>
+    },
+    {
+        path: '/faq',
+        element: <Faq></Faq>
+    },
+    {
+        path: '/terms',
+        element: <Terms></Terms>
+    },
+    {
+        path: '/blog',
+        element: <Blog></Blog>
+    }
 ])
