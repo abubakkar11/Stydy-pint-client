@@ -1,3 +1,6 @@
 .navbar:hover{
     color: orange;
 }
+.hover:hover{
+  display: block;
+}

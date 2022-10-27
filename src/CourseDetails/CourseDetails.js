@@ -73,12 +73,11 @@ const CourseDetails = () => {
                                 <p>{body}</p>
                             }
                         </Card.Text>
-
                     </Card.Body>
                     <div className='d-flex justify-content-between container align-items-center'>
                         <h3>${price}</h3>
-                        <h4 className='d-flex justify-content-center align-items-center'><AiFillEye></AiFillEye>{total_view}</h4>
-                        <h4>{rating.number}</h4>
+                        <h4 className='d-none d-md-block justify-content-center align-items-center'><AiFillEye></AiFillEye>{total_view}</h4>
+                        <h4 className='d-none d-md-block'>{rating.number}</h4>
                         <Link ><Button onClick={handleShow} className='mb-2' variant="primary">Download</Button></Link>
                     </div>
                 </Card>

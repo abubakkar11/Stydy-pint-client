@@ -8,7 +8,7 @@ const CourseCard = ({ course }) => {
   console.log(course)
   const { img, title, body } = course
   return (
-    <div className='w-75 mb-2 '>
+    <div className='w-75   mb-2 '>
       <CardGroup className='mb-2 '>
         <Card>
           <Card.Img variant="top" style={{ width: '100%', height: '250px', padding: '10px' }} src={img} />

@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 const LeftSideNav = () => {
     const [catagories, setCatagories] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:4000/catagories')
+        fetch('https://study-point-server1.vercel.app/catagories')
             .then(res => res.json())
             .then(data => setCatagories(data))
     }, [])

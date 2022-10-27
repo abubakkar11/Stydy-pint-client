@@ -11,7 +11,7 @@ const Course = () => {
   const { img, title, body, } = course;
   return (
     <div>
-      <CardGroup className='mb-2 w-75'>
+      <CardGroup className='mb-2 md-w-75'>
         <Card>
           <Card.Img variant="top" style={{ width: '100%', height: '250px', padding: '10px' }} src={img} />
           <Card.Body>
@@ -24,7 +24,7 @@ const Course = () => {
                   <p>{body}</p>
               }
             </Card.Text>
-            <Link to={`/course-details/${course._id}`}><Button variant="outline-primary">Get more information</Button></Link>
+            <Link to={`/course-details/${course._id}`}><Button variant="primary">Get premium access</Button></Link>
           </Card.Body>
 
         </Card>

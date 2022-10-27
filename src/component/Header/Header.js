@@ -8,16 +8,19 @@ import ImageTitle from './image/Study title.png'
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext/AuthContext';
-import { Button, } from 'react-bootstrap';
+import { Button, Image, } from 'react-bootstrap';
 import { AiOutlineLogout, AiOutlineUserSwitch, } from 'react-icons/ai';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 
 const Header = () => {
   const [darkmode, setDarkmode] = useState(true)
   const { user, logOut } = useContext(AuthContext);
+  const [hover, setHover] = useState(true)
   const handleLogOut = () => {
     logOut()
       .then(() => { })
@@ -32,6 +35,7 @@ const Header = () => {
               src={ImageTitle}
               width="50"
               height="50"
+
               className="d-inline-block align-top"
               alt="Study point logo"
             />
@@ -47,25 +51,46 @@ const Header = () => {
 
             </Nav>
             <Nav className='d-flex justify-content-center align-items-center'>
-            <Nav.Link href="#deets">
-              {
-                <div className='d-md-none '>
-                  <LeftSideNav></LeftSideNav>
-                </div>
-              }
-              {
-                user?.uid ?
-                  <img
-                    src={user?.photoURL}
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top rounded-circle"
-                    alt={user.displayName}
-                  />
-                  :
-                  <AiOutlineUserSwitch className='fs-4'></AiOutlineUserSwitch>
-              }
-               </Nav.Link>
+              <Nav.Link href="#deets">
+                {
+                  <div className='d-md-none '>
+                    <LeftSideNav></LeftSideNav>
+                  </div>
+                }
+                {
+                  user?.uid ?
+                    <>
+                      <OverlayTrigger
+      placement="bottom"
+      overlay={<Tooltip id="button-tooltip-2">{user?.displayName}</Tooltip>}
+    >
+      {({ ref, ...triggerHandler }) => (
+        <Button
+          variant="none"
+          {...triggerHandler}
+          className="d-inline-flex align-items-center"
+        >
+          <Image
+            ref={ref}
+            roundedCircle
+            src={user?.photoURL}
+            width ="30px"
+            height={'30px'}
+          />
+          
+        </Button>
+      )}
+    </OverlayTrigger>
+                      
+                    </>
+
+                    :
+                    <>
+                      <AiOutlineUserSwitch className='fs-4'></AiOutlineUserSwitch>
+
+                    </>
+                }
+              </Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
                 {
                   user?.uid ?
