@@ -6,6 +6,7 @@ import Home from "../component/Home/Home";
 import Terms from "../component/Terms/Terms";
 import Course from "../Course/Course";
 import CourseDetails from "../CourseDetails/CourseDetails";
+import PdfDownload from "../CourseDetails/PdfDownload/PdfDownload";
 import Main from "../Layout/Main";
 import Login from "../Login/Login/Login";
 import Register from "../Login/Register/Register";
@@ -40,12 +41,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/course/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/course-details/${params.id}`),
+                loader: ({ params }) => fetch(`https://study-point-server1.vercel.app/course-details/${params.id}`),
                 element: <Course></Course>
             },
             {
                 path: '/course-details/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+                loader: ({ params }) => fetch(`https://study-point-server1.vercel.app/course/${params.id}`),
                 element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
             },
         ]
@@ -66,5 +67,9 @@ export const router = createBrowserRouter([
     {
         path: '/blog',
         element: <Blog></Blog>
+    },
+    {
+        path : 'pdf-download',
+        element : <PdfDownload></PdfDownload>
     }
 ])

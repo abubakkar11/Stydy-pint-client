@@ -7,7 +7,7 @@ import './Home.css'
 const Home = () => {
     const [courses , setCourses] = useState([]);
     useEffect(() =>{
-        fetch('http://localhost:5000/All-courses')
+        fetch('https://study-point-server1.vercel.app/All-courses')
         .then(res => res.json())
         .then(data => setCourses(data))
     },[])
